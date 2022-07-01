@@ -37,6 +37,17 @@ class Insta_info:
             with open("unfollowers.txt","a+") as f:
                 file = f.write(unfollowers)
 
+    def get_my_mutual_friends(self):
+
+        followers_file = set(open("followers.txt").readlines())
+        followees_file = set(open("followees.txt").readlines())
+
+        mutual_set = followees_file.intersection(followers_file)
+
+        for mutuals in mutual_set:
+            with open("unfollowers.txt","a+") as f:
+                file = f.write(mutuals)
+
 insta_info = Insta_info("enliven_arts")
 
 insta_info.Login()

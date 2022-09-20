@@ -1,4 +1,6 @@
 import instaloader
+import os
+from pprint import pprint
 
 class Insta_info:
 
@@ -48,6 +50,8 @@ class Insta_info:
             with open("unfollowers.txt","a+") as f:
                 file = f.write(mutuals)
 
+        print('Done')
+
 insta_info = Insta_info("enliven_arts")
 
 insta_info.Login()
@@ -55,3 +59,17 @@ insta_info.Login()
 insta_info.get_my_followers()
 insta_info.get_my_followees()
 insta_info.get_my_unfollowers()
+
+def get_list_of_mutual_unfollowers():
+
+    uf = set(open("unfollowers.txt").readlines())
+    uf1 = set(open("uu.txt").readlines())
+
+    u = sorted(uf.difference(uf1))
+
+    for u1 in u:
+        with open("uu.txt","a+") as f:
+            file = f.write(u1)
+
+    print('written')
+#get_list_of_mutual_unfollowers()

@@ -1,6 +1,7 @@
 import instaloader
 import os
 from pprint import pprint
+import pywhatkit
 
 class Insta_info:
 
@@ -14,20 +15,21 @@ class Insta_info:
         login = self.loader.load_session_from_file(self.username)
         return login
 
+    #followers list
     def get_my_followers(self):
 
         for followers in self.profile.get_followers():
             with open("followers.txt","a+") as f:
                 file = f.write(followers.username+'\n')
 
-
+    #followees list
     def get_my_followees(self):
     
         for followees in self.profile.get_followees():
             with open("followees.txt","a+") as f:
                 file = f.write(followees.username+'\n')
 
-
+    #unfollowers list
     def get_my_unfollowers(self):
     
         followers_file = set(open("followers.txt").readlines())
@@ -39,6 +41,7 @@ class Insta_info:
             with open("unfollowers.txt","a+") as f:
                 file = f.write(unfollowers)
 
+    #mutual friends list
     def get_my_mutual_friends(self):
 
         followers_file = set(open("followers.txt").readlines())
@@ -47,29 +50,27 @@ class Insta_info:
         mutual_set = followees_file.intersection(followers_file)
 
         for mutuals in mutual_set:
-            with open("unfollowers.txt","a+") as f:
+            with open("mutualfollowers.txt","a+") as f:
                 file = f.write(mutuals)
 
-        print('Done')
 
 insta_info = Insta_info("enliven_arts")
-
 insta_info.Login()
 
-insta_info.get_my_followers()
-insta_info.get_my_followees()
-insta_info.get_my_unfollowers()
+# send whatsapp msg with list of unfollowers at 13:36
+def send_whatsapp_msg():
+    contact_num = open("number.txt","r+")
+    num = contact_num.read()
+    contact_num.close()
 
-def get_list_of_mutual_unfollowers():
+    list_of_unfollowers = open("unfollowers.txt","r+")
+    names = list_of_unfollowers.read()
+    list_of_unfollowers.close()
 
-    uf = set(open("unfollowers.txt").readlines())
-    uf1 = set(open("uu.txt").readlines())
+    pywhatkit.sendwhatmsg(str(num),"List of Unfollowers"+"\n"+names,13, 36)
 
-    u = sorted(uf.difference(uf1))
-
-    for u1 in u:
-        with open("uu.txt","a+") as f:
-            file = f.write(u1)
-
-    print('written')
-#get_list_of_mutual_unfollowers()
+#insta_info.get_my_followers()
+#insta_info.get_my_followees()
+#insta_info.get_my_unfollowers()
+#insta_info.get_my_mutual_friends()
+send_whatsapp_msg()

@@ -12,22 +12,9 @@ python insta_unfollowers.py
 
 This will generate threee .txt files with name followers.txt, followees.txt, unfollowers.txt
 
-# Scheduling Python Scripts on Linux
+# Sending list of unfollower to your Whatsapp Number
 
+Install pywhatkit package:
 ```
-crontab -e
+pip install pywhatkit
 ```
-
-```
-* * * * * /usr/bin/env python3 /home/amninder/Desktop/Geeks/cron/schedule.py >> /home/amninder/Desktop/Geeks/cron/output.txt
-```
-
-Check logs :
-```
-sudo tail -f /var/log/syslog
-```
-
-This will delete the current cron jobs:
-```
-crontab -r
-```  

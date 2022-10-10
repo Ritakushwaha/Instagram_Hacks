@@ -68,8 +68,8 @@ def send_whatsapp_msg():
 
     pywhatkit.sendwhatmsg(str(num),"List of Unfollowers"+"\n"+names,13, 36)
 
-'''insta_info.get_my_followers()
+insta_info.get_my_followers()
 insta_info.get_my_followees()
 insta_info.get_my_unfollowers()
-insta_info.get_my_mutual_friends()'''
+insta_info.get_my_mutual_friends()
 send_whatsapp_msg()

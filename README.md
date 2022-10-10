@@ -1,6 +1,6 @@
 # Instagram_Hacks
 
-### This little program to fetch the list of unfollowers and send it to Whatsapp number.
+### This little program is to fetch the list of unfollowers and send it to Whatsapp number.
 
 1. Run the command in terminal - 
 ```

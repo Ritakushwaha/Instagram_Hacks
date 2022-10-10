@@ -1,6 +1,4 @@
 import instaloader
-import os
-from pprint import pprint
 import pywhatkit
 
 class Insta_info:

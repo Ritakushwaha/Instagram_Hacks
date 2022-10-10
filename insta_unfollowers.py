@@ -54,14 +54,13 @@ class Insta_info:
                 file = f.write(mutuals)
 
 
-insta_info = Insta_info("username")
+insta_info = Insta_info("insta_username")
 insta_info.Login()
 
 # send whatsapp msg with list of unfollowers at 13:36
 def send_whatsapp_msg():
-    contact_num = open("number.txt","r+")
-    num = contact_num.read()
-    contact_num.close()
+    #country code for india +91
+    num = '+91'+str(int(input("Enter Whatsapp Number")))
 
     list_of_unfollowers = open("unfollowers.txt","r+")
     names = list_of_unfollowers.read()
@@ -69,8 +68,8 @@ def send_whatsapp_msg():
 
     pywhatkit.sendwhatmsg(str(num),"List of Unfollowers"+"\n"+names,13, 36)
 
-insta_info.get_my_followers()
+'''insta_info.get_my_followers()
 insta_info.get_my_followees()
 insta_info.get_my_unfollowers()
-insta_info.get_my_mutual_friends()
+insta_info.get_my_mutual_friends()'''
 send_whatsapp_msg()
